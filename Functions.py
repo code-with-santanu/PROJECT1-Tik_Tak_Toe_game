@@ -1,7 +1,4 @@
 # Display initial board
-from turtle import goto
-
-
 def display_board(board):
 
     # displaying the positions in the board
