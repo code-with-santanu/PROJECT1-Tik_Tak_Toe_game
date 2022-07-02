@@ -1,4 +1,7 @@
 # Display initial board
+from turtle import goto
+
+
 def display_board(board):
 
     # displaying the positions in the board
@@ -12,15 +15,8 @@ def display_board(board):
     return board
 
 
-# Clear the board
-def clear_board(board):
-    # replace the position no with blank space
-    display_board(board)
-
-
 # Take and verify users choice
 def user_input():
-
     # Initial condition
     c = 'choice'
     check = True
@@ -31,24 +27,36 @@ def user_input():
 
         # digit checking
         if c.isdigit() == False:
-            print("It's not an integer")
+            print("\nIt's not an integer")
         elif c.isdigit() == True:
 
             # range checking
             if int(c) in valid:
                 check = False
             else:
-                print('You entered an invalid position')
+                print('\nYou entered an invalid position')
 
     return int(c)
 
 
-# Cheat Checking
+# Empty Checking
 def cheat_check(lst, user_choice):
+    # checking if the position is empty or not
     if lst[user_choice] == ' ':
         return True
     else:
         return False
+
+
+# Chcek Who's turn is it
+def player_turn(player1, player2, turn=2):
+    if turn == 2:
+        print("\n{}'s turn".format(player1))
+        turn = 1
+    elif turn == 1:
+        print("\n{}'s turn".format(player2))
+        turn = 2
+    return turn
 
 
 # Place the marker
@@ -60,7 +68,7 @@ def replace_choice(lst, user_choice, player_no):
     return lst
 
 
-# winner check
+# check if anyone wins
 def win_check(lst):
     if lst[1] == lst[2] == lst[3] and lst[1] != ' ':
         return 1
@@ -82,24 +90,27 @@ def win_check(lst):
         return 0
 
 
-# Winner Player
-def player(lst, win_index):
+# Find winner's name
+def player(lst, win_index, player1, player2):
     if lst[win_index] == 'X':
-        print('Player 1 win this game')
+        print(f'Congrats!! {player1} wins this game')
     elif lst[win_index] == 'O':
-        print('Player 2 win this game')
+        print(f'Congrats!! {player2} wins this game')
 
 
-def tie_game(win_index):
-    if win_index == 0:
-        print('The game is tied')
+# Replay the game
+def replay():
+    print('\nWanna play again??')
+    c = True
+    while c:
+        select = input('\nChoose one[y / n]: ')
 
-
-def player_turn(turn=2):
-    if turn == 2:
-        print("\nPlayer1's turn")
-        turn = 1
-    elif turn == 1:
-        print("\nPlayer2's turn")
-        turn = 2
-    return turn
+        if select == 'y':
+            c = False
+            return True
+        elif select == 'n':
+            c = False
+            return False
+        else:
+            print("\nEnter correct option")
+            c = True
