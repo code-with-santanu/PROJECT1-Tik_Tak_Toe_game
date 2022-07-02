@@ -51,10 +51,10 @@ def cheat_check(lst, user_choice):
 # Chcek Who's turn is it
 def player_turn(player1, player2, turn=2):
     if turn == 2:
-        print("\n{}'s turn".format(player1))
+        print("\n{}'s turn...".format(player1))
         turn = 1
     elif turn == 1:
-        print("\n{}'s turn".format(player2))
+        print("\n{}'s turn...".format(player2))
         turn = 2
     return turn
 

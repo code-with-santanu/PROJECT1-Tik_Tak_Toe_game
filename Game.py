@@ -5,9 +5,10 @@ def board():
     board_list = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
     # Display the position of each block
+    print("Remember the position of the blocks that's show below")
     reset_list = display_board(board_list)
 
-    print("\nARE  YOU  READY  GUYS?\nLET'S  START  THE  GAME.......")
+    print("\nARE  YOU  READY  GUYS?\nLET'S  START  THE  GAME.......\n")
     # showing empty board
     display_board(reset_list)
 
